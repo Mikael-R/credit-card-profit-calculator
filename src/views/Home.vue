@@ -23,8 +23,8 @@ import InputMoney from '@/components/InputMoney.vue'
         v-model="useCalc.form.pointsPerDolar"
         label="Pontos por dólar"
       />
-      <InputMoney v-model="useCalc.form.milesPrice" label="Valor do milheiro" />
       <InputMoney v-model="useCalc.form.invoiceValue" label="Valor da fatura do cartão" />
+      <InputMoney v-model="useCalc.form.milesPrice" label="Valor do milheiro" />
       <InputMoney v-model="useCalc.form.monthlyPayment" label="Anuidade (mensal)" />
       <InputMoney
         :options="{

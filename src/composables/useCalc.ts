@@ -30,26 +30,26 @@ const useCalc = () => {
   })
 
   const calculateMonthlyProfit = (invoiceValue = 0) => {
-    let miles = invoiceValue / form.value.dolarPrice * form.value.pointsPerDolar
-    miles = miles + (miles * (form.value.transferBonus / 100))
-    return toFixed(miles / 1000 * form.value.milesPrice - form.value.monthlyPayment)
-  }
+    let miles = invoiceValue / form.value.dolarPrice * form.value.pointsPerDolar;
+    if (form.value.transferBonus) miles += miles * (form.value.transferBonus / 100);
+    return toFixed(miles / 1000 * form.value.milesPrice - form.value.monthlyPayment);
+  };
 
-  const calculateMinimumInvoiceValue = () => {
-    if (form.value.monthlyPayment <= 0) return 0;
+  const minimumInvoiceValue = computed(() => {
+    if (!form.value.monthlyPayment || !form.value.dolarPrice || !form.value.pointsPerDolar || !form.value.milesPrice) return 0;
 
-    let testInvoiceValue = 10;
-    let profit = -1
+    let testInvoiceValue = 0;
 
-    while (profit < 0) {
-      testInvoiceValue += 1
-      profit = calculateMonthlyProfit(testInvoiceValue)
+    const maxIterations = 30000;
+    let iterations = 0;
+
+    while (calculateMonthlyProfit(testInvoiceValue) < 0 && iterations < maxIterations) {
+      testInvoiceValue += 1;
+      iterations += 1;
     }
 
-    return testInvoiceValue;
-  }
-
-  const minimumInvoiceValue = computed(() => calculateMinimumInvoiceValue())
+    return calculateMonthlyProfit(testInvoiceValue) >= 0 ? testInvoiceValue : 0;
+  });
 
   return reactive({
     form,
