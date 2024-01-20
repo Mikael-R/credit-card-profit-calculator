@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import useCalc from '@/composables/useCalc'
+import HorizontalLine from '@/components/HorizontalLine.vue'
+import Footer from '@/components/Footer.vue'
 import InputMoney from '@/components/InputMoney.vue'
 </script>
 
 <template>
-  <main class="p-5 lg:px-10 text-[#f2f2f2] bg-[#195ab4]">
-    <h1 class="text-center text-3xl font-semibold m-3 mb-6 lg:m-5 lg:mb-10">
-      Calculadora de lucro de cartão de crédito
+  <main class="p-4 lg:px-10 text-[#f2f2f2] bg-[#195ab4] min-h-screen flex flex-col">
+    <h1 class="text-center text-3xl font-semibold m-3 lg:m-5">
+      Calculadora de lucro com cartão de crédito💰
     </h1>
+    <HorizontalLine />
     <div class="grid lg:grid-cols-4 gap-5">
       <InputMoney v-model="useCalc.form.dolarPrice" label="Valor atual do dólar" />
       <InputMoney
@@ -33,7 +36,7 @@ import InputMoney from '@/components/InputMoney.vue'
         label="Bônus de transferência"
       />
     </div>
-    <hr class="w-full my-5 border-t border-dashed border-[#f2f2f2]" />
+    <HorizontalLine />
     <div class="grid lg:grid-cols-4 gap-5">
       <InputMoney v-model="useCalc.annualProfit" label="Possível lucro anual" readonly />
       <InputMoney v-model="useCalc.monthlyProfit" label="Possível lucro mensal" readonly />
@@ -49,5 +52,7 @@ import InputMoney from '@/components/InputMoney.vue'
         readonly
       />
     </div>
+    <HorizontalLine />
+    <Footer />
   </main>
 </template>
