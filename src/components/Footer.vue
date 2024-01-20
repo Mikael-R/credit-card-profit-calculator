@@ -6,7 +6,7 @@
     </p>
     <p @click="copyPix" class="cursor-pointer">
       Gostou do projeto? Faça uma doação! <br />
-      <span>{{ pixKey }}</span>
+      <span class="font-bold">{{ pixKey }}</span>
     </p>
     <p class="flex flex-row items-center gap-2">
       Ou deixe uma ⭐ no
