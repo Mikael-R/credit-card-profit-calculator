@@ -13,7 +13,9 @@ import InputMoney from '@/components/InputMoney.vue'
       <InputMoney
         :options="{
           prefix: '',
-          precision: 1
+          precision: 1,
+          decimal: '.',
+          thousands: ''
         }"
         v-model="useCalc.form.pointsPerDolar"
         label="Pontos por dólar"
@@ -39,7 +41,8 @@ import InputMoney from '@/components/InputMoney.vue'
       <InputMoney
         :options="{
           prefix: '',
-          precision: 0
+          precision: 0,
+          thousands: ' '
         }"
         v-model="useCalc.milesPerYear"
         label="Milhas acumuladas no ano"
