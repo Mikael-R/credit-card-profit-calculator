@@ -7,8 +7,8 @@ This template should help get you started developing with Vue 3 in Vite.
 - [x] Add field mask
 - [x] Add repository redirect button
 - [x] Add donation info
+- [x] Add sponsor button
 - [ ] Generate pretty readme with readme-template-generator
-- [ ] Add sponsor button
 
 ## Recommended IDE Setup
 
